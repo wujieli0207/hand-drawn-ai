@@ -97,7 +97,7 @@ const config: Config = {
         ping: {
           '75%, 100%': {
             transform: 'scale(2)',
-            opacity: 0,
+            opacity: '0',
           },
         },
 
@@ -114,7 +114,7 @@ const config: Config = {
         },
       },
 
-      typography: (theme) => ({
+      typography: (theme: any) => ({
         lg: {
           css: {
             h1: {
@@ -166,7 +166,6 @@ const config: Config = {
             '--tw-prose-invert-headings': theme('colors.white'),
             '--tw-prose-invert-lead': theme('colors.white'),
             '--tw-prose-invert-links': theme('colors.white'),
-            '--tw-prose-links-hover': theme('colors.purple[300]'),
             '--tw-prose-invert-bold': theme('colors.white'),
             '--tw-prose-invert-counters': theme('colors.purple[25]'),
             '--tw-prose-invert-bullets': theme('colors.purple[100]'),
