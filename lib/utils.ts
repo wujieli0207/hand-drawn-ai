@@ -6,3 +6,7 @@ import { twMerge } from 'tailwind-merge'
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export function removeBlank(str: string, replace = '') {
+  return str.replaceAll(/\s+/g, replace)
+}

@@ -1,28 +1,16 @@
 'use client'
 
-// @ts-ignore
-import confetti from 'canvas-confetti'
 import Button from '@/components/ui/Button'
 import Icon from '../Icon'
 import { useState } from 'react'
 
-interface IProps {
-  prompt: string
-}
-
-export default function CopyPromptBtn({ prompt }: IProps) {
+export default function ShareBtn() {
   const [isCopy, setIsCopy] = useState(false)
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(prompt)
+      await navigator.clipboard.writeText(window.location.href)
       setIsCopy(true)
-      // Trigger confetti
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      })
     } catch (err) {
       console.error('Failed to copy prompt: ', err)
     } finally {
@@ -40,7 +28,7 @@ export default function CopyPromptBtn({ prompt }: IProps) {
       onClick={handleCopy}
     >
       <Icon icon="copy" className="mr-3 h-5 w-5" stroke={2} />
-      {isCopy ? 'Copied!' : 'Copy Prompt'}
+      {isCopy ? 'Copied!' : 'Share'}
     </Button>
   )
 }

@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Icon from '@/components/Icon'
 import { IImage } from '@/types/gallery'
 import CopyPromptBtn from './CopyPromptBtn'
+import DownloadImageBtn from './DownloadImageBtn'
+import ShareBtn from './ShareBtn'
 
 interface IProps {
   image: IImage
@@ -22,28 +24,30 @@ export default function ImageDetail({ image }: IProps) {
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-12 xl:grid-cols-11 xl:gap-24">
           {/* Text content */}
           <div className="flex flex-col justify-center lg:order-2 lg:col-span-1 xl:col-span-6">
-            <div>
-              <span className="inline-block -rotate-1 rounded-full bg-purple-200 px-4 py-2 font-medium text-purple-700 shadow-md">
+            {/* <span className="inline-block -rotate-1 rounded-full bg-purple-200 px-4 py-2 font-medium text-purple-700 shadow-md">
                 AI Generated
-              </span>
-            </div>
+              </span> */}
             <h2 className="h2 mt-4 text-purple-900 sm:mt-5">{imageTitle}</h2>
             <p className="mt-4 max-w-xl text-xl leading-relaxed text-purple-800 md:mt-5">
               {imageContent}
             </p>
+            <p className="space-x-4">
+              <DownloadImageBtn title={imageTitle} url={imageUrl} />
+              <ShareBtn />
+            </p>
             {/* Teacher qualifications box */}
             <div className="relative mt-16 max-w-4xl rounded-xl bg-yellow-100 sm:mt-14">
-              <span className="absolute -top-7 left-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-purple-600 shadow-md sm:left-10">
+              {/* <span className="absolute -top-7 left-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-purple-600 shadow-md sm:left-10">
                 <Icon icon="certificate" className="h-8 w-8 text-purple-50" />
-              </span>
+              </span> */}
               <div className="mt-2 px-4 py-10 sm:px-10 sm:py-12">
-                <p className="text-lg font-semibold text-purple-900 sm:text-xl">
+                <h3 className="font-semibold text-purple-900 sm:text-xl">
                   prompt
-                </p>
+                </h3>
                 {/* Teacher qualifications list */}
-                <div className="mt-5 space-y-5 text-lg text-purple-800">
+                <p className="mt-5 space-y-5 text-lg text-purple-800">
                   {imagePrompt}
-                </div>
+                </p>
                 <CopyPromptBtn prompt={imagePrompt} />
               </div>
             </div>
