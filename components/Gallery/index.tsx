@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { IImage, ITag } from '@/types/gallery'
+import Link from 'next/link'
 
 // 确保只在客户端渲染
 const Masonry = dynamic(() => import('masonic').then((mod) => mod.Masonry), {
@@ -82,7 +83,8 @@ export default function Gallery({ gallery, tags }: IProps) {
     const { imageUrl, content } = data
 
     return (
-      <div
+      <Link
+        href={`/image/${data.id}`}
         className="relative rounded-2xl bg-purple-50"
         key={`gallery-image-${data.id}`}
         data-src={imageUrl}
@@ -95,7 +97,7 @@ export default function Gallery({ gallery, tags }: IProps) {
           alt={content}
           sizes="(min-width: 1280px) 19.25rem, (min-width: 1024px) 25vw, (min-width: 768px) 23.25rem, (min-width: 640px) 50vw, 100vw"
         />
-      </div>
+      </Link>
     )
   }
 
