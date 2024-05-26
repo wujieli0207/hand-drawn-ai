@@ -1,6 +1,3 @@
-{
-  /* This component uses Lightgallery, a customizable, modular, responsive, lightbox gallery plugin.  https://github.com/sachinchoolur/lightGallery */
-}
 import { getTranslations } from 'next-intl/server'
 import WaitingList from './WaitingList'
 import HeroImages from './HeroImages'
@@ -9,7 +6,7 @@ export default async function GalleryHero() {
   const t = await getTranslations('Hero')
 
   return (
-    <section className="h-full w-full relative bg-purple-25 px-4 pt-16 sm:px-6 lg:px-8">
+    <section className="w-full relative bg-purple-25 px-4 pt-16 sm:px-6 lg:px-8">
       {/* Container */}
       <div className="mx-auto max-w-screen-xl">
         {/* Hero header text */}

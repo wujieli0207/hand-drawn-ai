@@ -1,8 +1,5 @@
 'use client'
 
-{
-  /* This component uses Lightgallery, a customizable, modular, responsive, lightbox gallery plugin.  https://github.com/sachinchoolur/lightGallery */
-}
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 // @ts-ignore
@@ -10,7 +7,6 @@ import confetti from 'canvas-confetti'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import 'lightgallery/css/lightgallery.css'
 import Icon from '../Icon'
 import { IconLoader } from '@tabler/icons-react'
 
