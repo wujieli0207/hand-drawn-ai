@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 import GoogleAnalytics from './GoogleAnalytics'
 import Loading from './loading'
 import { siteConfig } from '@/config/site'
+import { Header } from '@/components/Home/Header'
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className="relative mx-auto flex min-h-screen flex-col bg-tap4-black text-white">
         <NextIntlClientProvider locale={locale} messages={messages}>
           {/* <Navigation /> */}
+          <Header />
           <Suspense fallback={<Loading />}>{children}</Suspense>
         </NextIntlClientProvider>
 
