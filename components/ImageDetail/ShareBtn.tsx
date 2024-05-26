@@ -27,7 +27,7 @@ export default function ShareBtn() {
       className="mt-10"
       onClick={handleCopy}
     >
-      <Icon icon="copy" className="mr-3 h-5 w-5" stroke={2} />
+      <Icon icon="share3" className="mr-3 h-5 w-5" stroke={2} />
       {isCopy ? 'Copied!' : 'Share'}
     </Button>
   )
