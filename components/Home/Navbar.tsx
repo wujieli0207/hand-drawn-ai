@@ -26,7 +26,7 @@ export function Navbar() {
   function Logo({ className }: { className?: string }) {
     return (
       <div className={clsx(className)}>
-        <Link href="/" className="flex items-center">
+        <Link href="/" title={siteName} className="flex items-center">
           <Image
             src="/favicon/favicon.svg"
             alt={siteName}
@@ -107,7 +107,7 @@ export function Navbar() {
                   {navigation.map((link) => (
                     <Fragment key={`mobile-link-${link.label}`}>
                       {link.label !== 'Programs' && (
-                        <Link href={link.href}>
+                        <Link href={link.href} title={link.label}>
                           <div className="group relative p-0.5">
                             <span className="relative z-10 text-2xl font-medium text-purple-50 duration-300 ease-in-out group-hover:text-white">
                               {link.label}
@@ -241,7 +241,7 @@ export function Navbar() {
                     )}
                   </Menu>
                 ) : (
-                  <Link href={link.href}>
+                  <Link href={link.href} title={link.label}>
                     <div className="group relative p-0.5">
                       <span
                         className={clsx(

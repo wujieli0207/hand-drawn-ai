@@ -88,6 +88,7 @@ export default function Gallery({ gallery, tags }: IProps) {
         className="relative rounded-2xl bg-purple-50"
         key={`gallery-image-${data.id}`}
         data-src={imageUrl}
+        title={data.title}
       >
         <Image
           src={imageUrl}
