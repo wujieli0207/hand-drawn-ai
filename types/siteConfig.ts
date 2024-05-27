@@ -28,9 +28,11 @@ export type SiteConfig = {
     title: string
     description: string
     siteName: string
+    images: string[]
   }
   twitter: {
     card: string
+    site: string
     title: string
     description: string
     images: string[]
