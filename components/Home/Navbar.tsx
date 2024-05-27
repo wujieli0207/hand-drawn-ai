@@ -10,18 +10,20 @@ import clsx from 'clsx'
 
 import Icon from '@/components/Icon'
 import { siteName } from '@/config/site'
-
-const navigation = [
-  { label: 'Home', href: '/' },
-  // { label: 'About', href: '/about' },
-  // { label: 'Programs' },
-  // { label: 'Gallery', href: '/gallery' },
-  // { label: 'Parents', href: '/parents' },
-  // { label: 'Contact', href: '/contact' },
-]
+import { useTranslations } from 'next-intl'
 
 export function Navbar() {
   const pathname = usePathname()
+  const t = useTranslations('Navbar')
+
+  const navigation = [
+    { label: t('home'), href: '/' },
+    // { label: 'About', href: '/about' },
+    // { label: 'Programs' },
+    // { label: 'Gallery', href: '/gallery' },
+    // { label: 'Parents', href: '/parents' },
+    // { label: 'Contact', href: '/contact' },
+  ]
 
   function Logo({ className }: { className?: string }) {
     return (

@@ -5,12 +5,15 @@ import confetti from 'canvas-confetti'
 import Button from '@/components/ui/Button'
 import Icon from '../Icon'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface IProps {
   prompt: string
 }
 
 export default function CopyPromptBtn({ prompt }: IProps) {
+  const t = useTranslations('Gallery')
+
   const [isCopy, setIsCopy] = useState(false)
 
   const handleCopy = async () => {
@@ -40,7 +43,7 @@ export default function CopyPromptBtn({ prompt }: IProps) {
       onClick={handleCopy}
     >
       <Icon icon="copy" className="mr-3 h-5 w-5" stroke={2} />
-      {isCopy ? 'Copied!' : 'Copy Prompt'}
+      {isCopy ? t('btn.copied') : t('btn.copyPrompt')}
     </Button>
   )
 }

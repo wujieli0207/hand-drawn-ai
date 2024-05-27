@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button'
 import Icon from '../Icon'
 import { siteName } from '@/config/site'
 import { removeBlank } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 
 interface IProps {
   title: string
@@ -13,6 +14,8 @@ interface IProps {
 }
 
 export default function DownloadImageBtn({ url, title }: IProps) {
+  const t = useTranslations('Gallery')
+
   const handleDownload = async () => {
     confetti({
       particleCount: 100,
@@ -59,7 +62,7 @@ export default function DownloadImageBtn({ url, title }: IProps) {
         stroke={2}
         className="mr-3 h-5 w-5 group-hover:animate-bounce"
       />
-      Download
+      {t('btn.download')}
     </Button>
   )
 }

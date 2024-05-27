@@ -1,4 +1,7 @@
 {
+  "Navbar": {
+    "home": "首页"
+  },
   "Hero": {
     "title": "当手绘艺术遇上 AI",
     "subTitle": "通过独特的 AI 增强手绘艺术提升您的品牌、营销和个人项目",
@@ -7,5 +10,14 @@
       "button": "提交"
     },
     "comingSoon": "即将推出"
+  },
+  "Gallery": {
+    "title": "最新图片",
+    "btn": {
+      "download": "下载",
+      "share": "分享",
+      "copyPrompt": "复制提示词",
+      "copied": "已复制!"
+    }
   }
 }

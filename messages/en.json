@@ -1,4 +1,7 @@
 {
+  "Navbar": {
+    "home": "Home"
+  },
   "Hero": {
     "title": "Where Hand Drawn Art Meets AI Magic",
     "subTitle": "Elevate your branding, marketing, and personal projects with unique AI-enhanced hand drawn art",
@@ -7,5 +10,14 @@
       "button": "Submit"
     },
     "comingSoon": "Coming Soon"
+  },
+  "Gallery": {
+    "title": "Latest hand drawn art",
+    "btn": {
+      "download": "Download",
+      "share": "Share",
+      "copyPrompt": "Copy Prompt",
+      "copied": "Copied!"
+    }
   }
 }

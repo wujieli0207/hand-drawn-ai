@@ -3,8 +3,11 @@
 import Button from '@/components/ui/Button'
 import Icon from '../Icon'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 export default function ShareBtn() {
+  const t = useTranslations('Gallery')
+
   const [isCopy, setIsCopy] = useState(false)
 
   const handleCopy = async () => {
@@ -28,7 +31,7 @@ export default function ShareBtn() {
       onClick={handleCopy}
     >
       <Icon icon="share3" className="mr-3 h-5 w-5" stroke={2} />
-      {isCopy ? 'Copied!' : 'Share'}
+      {isCopy ? t('btn.copied') : t('btn.share')}
     </Button>
   )
 }
