@@ -1,7 +1,7 @@
 import { IImage } from '@/types/gallery'
 import { createClient } from '@/lib/supabase/server'
 
-export async function fetchImages(imageId?: number): Promise<IImage[]> {
+export async function fetchImages(imageId?: string): Promise<IImage[]> {
   const supabase = createClient()
 
   let query = supabase.from('image').select(`
@@ -28,11 +28,12 @@ export async function fetchImages(imageId?: number): Promise<IImage[]> {
     )
   `)
 
-  if (typeof imageId === 'number') {
+  if (typeof imageId === 'string') {
     query = query.eq('id', imageId)
   }
 
   const { data: imagesData, error } = await query
+  console.log('imagesData: ', imagesData)
 
   if (error) {
     console.error('Error fetching images:', error)

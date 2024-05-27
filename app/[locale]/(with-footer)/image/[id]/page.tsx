@@ -5,7 +5,7 @@ import { IImage } from '@/types/gallery'
 export default async function Image({ params }: { params: { id: string } }) {
   const { id } = params
 
-  const result = await fetchImages(Number(id))
+  const result = await fetchImages(id)
   const image = result as IImage[]
 
   return (
