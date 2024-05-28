@@ -12,12 +12,13 @@
     "comingSoon": "Coming Soon"
   },
   "Gallery": {
-    "title": "Latest hand drawn art",
+    "title": "Latest hand drawn image",
     "btn": {
       "download": "Download",
       "share": "Share",
       "copyPrompt": "Copy Prompt",
       "copied": "Copied!"
-    }
+    },
+    "similarImage": "Similar hand drawn image"
   }
 }

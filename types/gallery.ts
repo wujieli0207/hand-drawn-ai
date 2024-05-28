@@ -8,7 +8,8 @@ export interface ITag extends ICommonInstanceProps {
   count: number
 }
 
-export interface IImage extends ICommonInstanceProps {
+export interface IImage extends Omit<ICommonInstanceProps, 'id'> {
+  id: string
   title: string
   content: string
   prompt: string

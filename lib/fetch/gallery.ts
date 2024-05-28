@@ -1,7 +1,14 @@
-import { IImage } from '@/types/gallery'
+import { IImage, ITag } from '@/types/gallery'
 import { createClient } from '@/lib/supabase/server'
 
-export async function fetchImages(imageId?: string): Promise<IImage[]> {
+interface IParams {
+  imageId?: string
+  tagIds?: Array<ITag['id']>
+}
+
+export async function fetchImages(params?: IParams): Promise<IImage[]> {
+  const { imageId, tagIds } = params ?? {}
+
   const supabase = createClient()
 
   let query = supabase.from('image').select(`
@@ -32,7 +39,12 @@ export async function fetchImages(imageId?: string): Promise<IImage[]> {
     query = query.eq('id', imageId)
   }
 
+  if (Array.isArray(tagIds) && tagIds.length > 0) {
+    query = query.in('image_tag_rel.tagId', tagIds)
+  }
+
   const { data: imagesData, error } = await query
+  console.log('imagesData: ', imagesData)
 
   if (error) {
     console.error('Error fetching images:', error)
