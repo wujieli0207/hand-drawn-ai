@@ -33,7 +33,6 @@ export async function fetchImages(imageId?: string): Promise<IImage[]> {
   }
 
   const { data: imagesData, error } = await query
-  console.log('imagesData: ', imagesData)
 
   if (error) {
     console.error('Error fetching images:', error)
