@@ -18,7 +18,7 @@ export default function ImageDetail({ image }: IProps) {
   } = image
 
   return (
-    <section className="relative w-full px-4 py-16 sm:px-6 sm:py-24 xl:px-8">
+    <section className="relative w-full pt-8 px-4 pb-16 sm:px-6 sm:pb-24 xl:px-8">
       {/* Container */}
       <div className="mx-auto max-w-xl lg:max-w-screen-xl">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-12 xl:grid-cols-11 xl:gap-24">
@@ -54,14 +54,17 @@ export default function ImageDetail({ image }: IProps) {
           </div>
           {/* Featured teachers section */}
           <div className="mx-auto grid items-center w-full gap-10 sm:mx-0 sm:max-w-none sm:grid-cols-1 sm:gap-8 lg:order-1 lg:col-span-1 lg:gap-4 xl:col-span-5 xl:gap-8">
-            <div className="relative rounded-3xl bg-yellow-50">
+            <div className="relative w-full h-full max-h-[700px]">
               <Image
-                className="rounded-3xl object-cover shadow-md"
+                // className="rounded-3xl object-contain h-32 w-full shadow-md"
+                className="rounded-3xl object-contain"
                 src={imageUrl}
-                layout="responsive"
-                width={400} // 设置固定宽度
-                height={300} // 高度将根据图片比例自适应
-                sizes="(min-width: 1280px) 15.6rem, (min-width: 1024px) 20.8vw, (min-width: 640px) 17rem, 100vw"
+                // layout="responsive"
+                layout="fill"
+                objectFit="contain"
+                // width={400} // 设置固定宽度
+                // height={300} // 高度将根据图片比例自适应
+                // sizes="(min-width: 1280px) 15.6rem, (min-width: 1024px) 20.8vw, (min-width: 640px) 17rem, 100vw"
                 alt={imageContent}
               />
             </div>
