@@ -37,8 +37,8 @@ export default function GalleryImages({ images, className }: IProps) {
             alt={title}
             sizes="(min-width: 1280px) 19.25rem, (min-width: 1024px) 25vw, (min-width: 768px) 23.25rem, (min-width: 640px) 50vw, 100vw"
           />
-          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-4 text-white transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-            <h3 className="text-lg font-semibold">{title}</h3>
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-30 px-4 py-2 text-white transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+            <h3 className="text-md font-semibold">{title}</h3>
             <div className="flex flex-wrap gap-2 mt-2">
               {tags.map((tag) => (
                 <span
