@@ -7,10 +7,33 @@ interface IParams {
 }
 
 export async function fetchImages(params?: IParams): Promise<IImage[]> {
-  const { imageId, tagIds } = params ?? {}
+  const { imageId, tagIds = [] } = params ?? {}
 
   const supabase = createClient()
 
+  // Step 1: Query image IDs that match the tagIds
+  let imageIdsQuery = supabase
+    .from('image_tag_rel')
+    .select('imageId', { count: 'exact' })
+    .in('tagId', tagIds!)
+
+  if (typeof imageId === 'string' && imageId !== '') {
+    imageIdsQuery = imageIdsQuery.eq('imageId', imageId)
+  }
+
+  const { data: imageIdsData, error: imageIdsError } = await imageIdsQuery
+
+  if (imageIdsError) {
+    console.error('Error fetching image IDs:', imageIdsError)
+    return []
+  }
+
+  // Extract unique image IDs
+  const imageIds = Array.from(
+    new Set(imageIdsData.map((rel: any) => rel.imageId))
+  )
+
+  // Step 2: Query images based on the extracted image IDs
   let query = supabase.from('image').select(`
     id,
     created_at,
@@ -38,13 +61,11 @@ export async function fetchImages(params?: IParams): Promise<IImage[]> {
   if (typeof imageId === 'string') {
     query = query.eq('id', imageId)
   }
-
-  if (Array.isArray(tagIds) && tagIds.length > 0) {
-    query = query.in('image_tag_rel.tagId', tagIds)
+  if (tagIds.length > 0 && imageIds.length > 0) {
+    query = query.in('id', imageIds)
   }
 
   const { data: imagesData, error } = await query
-  console.log('imagesData: ', imagesData)
 
   if (error) {
     console.error('Error fetching images:', error)
