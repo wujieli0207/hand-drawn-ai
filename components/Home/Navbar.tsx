@@ -29,12 +29,7 @@ export function Navbar() {
     return (
       <div className={clsx(className)}>
         <Link href="/" title={siteName} className="flex items-center">
-          <Image
-            src="/favicon/favicon.svg"
-            alt={siteName}
-            width={44}
-            height={44}
-          />
+          <Image src="/favicon/favicon.svg" alt="logo" width={44} height={44} />
           <span className="ml-4 text-2xl font-bold text-black">{siteName}</span>
         </Link>
       </div>
