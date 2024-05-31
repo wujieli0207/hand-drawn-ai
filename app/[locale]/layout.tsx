@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <head>
         {/* foundr ai */}
-        <meta name="_foundr" content="320e8ad9d60f914e568461c311a9f233"></meta>
+        <meta name="_foundr" content="33b1714beb13b5cf9b436b4e75e55e49" />
       </head>
       <body className="relative mx-auto flex min-h-screen flex-col bg-tap4-black text-white">
         <NextIntlClientProvider locale={locale} messages={messages}>
