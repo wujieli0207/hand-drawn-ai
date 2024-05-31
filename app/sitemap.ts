@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const imageRoutes = images.flatMap((item) => {
     return locales.map((locale) => {
-      const lang = locale === 'en' ? '' : `/${locale}`
+      const lang = locale === 'en' ? '' : `${locale}`
       return {
         url: `${siteUrl}${lang}/image/${item.id}`,
         lastModified: item.created_at,
@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   const routes = [''].map((route) => ({
-    url: `${siteUrl}/${route}`,
+    url: `${siteUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
 

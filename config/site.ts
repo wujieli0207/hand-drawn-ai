@@ -5,14 +5,14 @@ export const siteName = 'Hand Drawn AI'
 const baseSiteConfig = {
   name: `${siteName} - Where Hand Drawn Art Meets AI Magic`,
   description: `${siteName} - Elevate your branding, marketing, and personal projects with unique AI-enhanced hand drawn art`,
-  url: 'https://handdrawn.ai/',
-  ogImage: 'https://handdrawn.ai/og.png',
-  metadataBase: new URL('https://handdrawn.ai/'),
+  url: 'https://www.handdrawn.ai/',
+  ogImage: 'https://www.handdrawn.ai/og.png',
+  metadataBase: new URL('https://www.handdrawn.ai/'),
   keywords: [siteName, 'hand drawn', 'hand-drawn'],
   authors: [
     {
       name: 'wujieli',
-      url: 'https://wujieli.com',
+      url: 'https://www.wujieli.com',
     },
   ],
   creator: '@wujieli',
