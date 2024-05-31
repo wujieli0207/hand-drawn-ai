@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   metadataBase: siteConfig.metadataBase,
   openGraph: siteConfig.openGraph,
   twitter: siteConfig.twitter,
+  alternates: {
+    canonical: siteConfig.url,
+  },
 }
 
 export default function RootLayout({

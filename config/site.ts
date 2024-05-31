@@ -5,9 +5,9 @@ export const siteName = 'Hand Drawn AI'
 const baseSiteConfig = {
   name: `${siteName} - Where Hand Drawn Art Meets AI Magic`,
   description: `${siteName} - Elevate your branding, marketing, and personal projects with unique AI-enhanced hand drawn art`,
-  url: 'https://handdrawn.ai',
+  url: 'https://handdrawn.ai/',
   ogImage: 'https://handdrawn.ai/og.png',
-  metadataBase: new URL('https://handdrawn.ai'),
+  metadataBase: new URL('https://handdrawn.ai/'),
   keywords: [siteName, 'hand drawn', 'hand-drawn'],
   authors: [
     {
@@ -37,14 +37,14 @@ export const siteConfig: SiteConfig = {
     title: baseSiteConfig.name,
     description: baseSiteConfig.description,
     siteName: baseSiteConfig.name,
-    images: [`${baseSiteConfig.url}/og.png`],
+    images: [`${baseSiteConfig.url}og.png`],
   },
   twitter: {
     card: 'summary_large_image',
     site: baseSiteConfig.url,
     title: baseSiteConfig.name,
     description: baseSiteConfig.description,
-    images: [`${baseSiteConfig.url}/og.png`],
+    images: [`${baseSiteConfig.url}og.png`],
     creator: baseSiteConfig.creator,
   },
 }
