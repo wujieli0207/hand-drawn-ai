@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import Icon from '@/components/Icon'
+// import Image from 'next/image'
+import { Image } from 'antd'
 import { IImage } from '@/types/gallery'
 import CopyPromptBtn from './CopyPromptBtn'
 import DownloadImageBtn from './DownloadImageBtn'
@@ -27,7 +27,7 @@ export default function ImageDetail({ image }: IProps) {
             {/* <span className="inline-block -rotate-1 rounded-full bg-purple-200 px-4 py-2 font-medium text-purple-700 shadow-md">
                 AI Generated
               </span> */}
-            <h2 className="h2 mt-4 text-purple-900 sm:mt-5">{imageTitle}</h2>
+            <h2 className="h2 text-purple-900">{imageTitle}</h2>
             <p className="mt-4 max-w-xl text-xl leading-relaxed text-purple-800 md:mt-5">
               {imageContent}
             </p>
@@ -54,9 +54,8 @@ export default function ImageDetail({ image }: IProps) {
           </div>
           {/* Featured teachers section */}
           <div className="mx-auto grid items-center w-full gap-10 px-8 border rounded-md sm:mx-0 sm:max-w-none sm:grid-cols-1 sm:gap-8 lg:order-1 lg:col-span-1 lg:gap-4 xl:col-span-5 xl:gap-8">
-            <div className="relative w-full h-full max-h-[700px]">
-              <Image
-                // className="rounded-3xl object-contain h-32 w-full shadow-md"
+            <div className="flex justify-center items-center w-full h-full">
+              {/* <Image
                 className="rounded-3xl object-contain"
                 src={imageUrl}
                 // layout="responsive"
@@ -66,7 +65,22 @@ export default function ImageDetail({ image }: IProps) {
                 // height={300} // 高度将根据图片比例自适应
                 // sizes="(min-width: 1280px) 15.6rem, (min-width: 1024px) 20.8vw, (min-width: 640px) 17rem, 100vw"
                 alt={imageContent}
+              /> */}
+              <Image
+                className="rounded-xl object-contain"
+                style={{ width: '100%', height: 'auto', maxHeight: '700px' }}
+                src={imageUrl}
+                alt={imageContent}
               />
+              {/* <Image
+                className="rounded-3xl object-contain"
+                // layout="fill"
+                // objectFit="contain"
+                width={400} // 设置固定宽度
+                height={300} // 高度将根据图片比例自适应
+                src={imageUrl}
+                alt={imageContent}
+              /> */}
             </div>
           </div>
         </div>
