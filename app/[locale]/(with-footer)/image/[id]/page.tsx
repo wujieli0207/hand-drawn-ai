@@ -1,8 +1,29 @@
 import GalleryImages from '@/components/Gallery/GalleryImages'
 import ImageDetail from '@/components/ImageDetail'
+import { siteConfig, siteName } from '@/config/site'
 import { fetchImages } from '@/lib/fetch/gallery'
 import { IImage } from '@/types/gallery'
+import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string }
+}): Promise<Metadata> {
+  const { id } = params
+  const result = (await fetchImages({ imageId: id })) as IImage[]
+  const image = result[0]
+
+  return {
+    title: `${siteName} - ${image.title}`,
+    description: image.content,
+    keywords: [
+      ...siteConfig.keywords,
+      ...(image.tags ?? [])?.map((item) => item.name),
+    ].join(','),
+  }
+}
 
 export default async function Image({ params }: { params: { id: string } }) {
   const t = await getTranslations('Gallery')
