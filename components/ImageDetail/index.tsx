@@ -23,7 +23,7 @@ export default function ImageDetail({ image }: IProps) {
       <div className="mx-auto max-w-xl lg:max-w-screen-xl">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-12 xl:grid-cols-11 xl:gap-24">
           {/* Text content */}
-          <div className="flex flex-col justify-center lg:order-2 lg:col-span-1 xl:col-span-6">
+          <div className="flex flex-col justify-center p-8 border rounded-md lg:order-2 lg:col-span-1 xl:col-span-6">
             {/* <span className="inline-block -rotate-1 rounded-full bg-purple-200 px-4 py-2 font-medium text-purple-700 shadow-md">
                 AI Generated
               </span> */}
@@ -53,7 +53,7 @@ export default function ImageDetail({ image }: IProps) {
             </div>
           </div>
           {/* Featured teachers section */}
-          <div className="mx-auto grid items-center w-full gap-10 sm:mx-0 sm:max-w-none sm:grid-cols-1 sm:gap-8 lg:order-1 lg:col-span-1 lg:gap-4 xl:col-span-5 xl:gap-8">
+          <div className="mx-auto grid items-center w-full gap-10 px-8 border rounded-md sm:mx-0 sm:max-w-none sm:grid-cols-1 sm:gap-8 lg:order-1 lg:col-span-1 lg:gap-4 xl:col-span-5 xl:gap-8">
             <div className="relative w-full h-full max-h-[700px]">
               <Image
                 // className="rounded-3xl object-contain h-32 w-full shadow-md"
