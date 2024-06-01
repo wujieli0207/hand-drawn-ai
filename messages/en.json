@@ -13,6 +13,7 @@
   },
   "Gallery": {
     "title": "Latest hand drawn image",
+    "prompt": "Prompt",
     "btn": {
       "download": "Download",
       "share": "Share",

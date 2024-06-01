@@ -13,6 +13,7 @@
   },
   "Gallery": {
     "title": "最新图片",
+    "prompt": "提示词",
     "btn": {
       "download": "下载",
       "share": "分享",

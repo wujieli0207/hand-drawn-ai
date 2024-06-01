@@ -1,5 +1,5 @@
-// import Image from 'next/image'
 import { Image } from 'antd'
+import { getTranslations } from 'next-intl/server'
 import { IImage } from '@/types/gallery'
 import CopyPromptBtn from './CopyPromptBtn'
 import DownloadImageBtn from './DownloadImageBtn'
@@ -9,13 +9,15 @@ interface IProps {
   image: IImage
 }
 
-export default function ImageDetail({ image }: IProps) {
+export default async function ImageDetail({ image }: IProps) {
   const {
     imageUrl,
     content: imageContent,
     title: imageTitle,
     prompt: imagePrompt,
   } = image
+
+  const t = await getTranslations('Gallery')
 
   return (
     <section className="relative w-full pt-8 px-4 pb-16 sm:px-6 sm:pb-24 xl:px-8">
@@ -28,7 +30,7 @@ export default function ImageDetail({ image }: IProps) {
                 AI Generated
               </span> */}
             <h2 className="h2 text-purple-900">{imageTitle}</h2>
-            <p className="mt-4 max-w-xl text-xl leading-relaxed text-purple-800 md:mt-5">
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-purple-800 md:mt-5">
               {imageContent}
             </p>
             <p className="space-x-4">
@@ -42,10 +44,10 @@ export default function ImageDetail({ image }: IProps) {
               </span> */}
               <div className="mt-2 px-4 py-10 sm:px-10 sm:py-12">
                 <h3 className="font-semibold text-purple-900 sm:text-xl">
-                  prompt
+                  {t('prompt')}
                 </h3>
                 {/* Teacher qualifications list */}
-                <p className="mt-5 space-y-5 text-lg text-purple-800">
+                <p className="mt-5 space-y-5 text-sm text-purple-800">
                   {imagePrompt}
                 </p>
                 <CopyPromptBtn prompt={imagePrompt} />
