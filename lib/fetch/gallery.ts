@@ -4,10 +4,11 @@ import { createClient } from '@/lib/supabase/server'
 interface IParams {
   imageId?: string
   tagIds?: Array<ITag['id']>
+  orderBy?: 'asc' | 'desc'
 }
 
 export async function fetchImages(params?: IParams): Promise<IImage[]> {
-  const { imageId, tagIds = [] } = params ?? {}
+  const { imageId, tagIds = [], orderBy = 'desc' } = params ?? {}
 
   const supabase = createClient()
 
@@ -34,7 +35,10 @@ export async function fetchImages(params?: IParams): Promise<IImage[]> {
   )
 
   // Step 2: Query images based on the extracted image IDs
-  let query = supabase.from('image').select(`
+  let query = supabase
+    .from('image')
+    .select(
+      `
     id,
     created_at,
     title,
@@ -56,7 +60,9 @@ export async function fetchImages(params?: IParams): Promise<IImage[]> {
         count
       )
     )
-  `)
+  `
+    )
+    .order('created_at', { ascending: orderBy === 'asc' })
 
   if (typeof imageId === 'string') {
     query = query.eq('id', imageId)

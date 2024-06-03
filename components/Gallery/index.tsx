@@ -78,7 +78,10 @@ export default function Gallery({ gallery, tags }: IProps) {
   return (
     <section>
       <GalleryTabs />
-      <GalleryImages images={galleryImages} className="-translate-y-56" />
+      <GalleryImages
+        images={galleryImages}
+        className="-translate-y-56 -mb-48"
+      />
     </section>
   )
 }

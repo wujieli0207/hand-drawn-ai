@@ -45,7 +45,7 @@ export default async function Image({ params }: { params: { id: string } }) {
       <h2 className="h2 mx-auto mt-10 mb-10 max-w-2xl text-center text-purple-900 sm:mb-12 md:mb-20">
         {t('similarImage')}
       </h2>
-      <GalleryImages images={releatedImage} />
+      <GalleryImages images={releatedImage} className="mb-12" />
     </>
   )
 }

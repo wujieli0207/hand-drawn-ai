@@ -58,7 +58,7 @@ export default function GalleryImages({ images, className }: IProps) {
   return (
     <div
       className={clsx(
-        '-mb-48 mt-12 px-4 sm:mt-16 sm:px-6 lg:mt-20 lg:px-8',
+        'mt-12 px-4 sm:mt-16 sm:px-6 lg:mt-20 lg:px-8',
         className
       )}
     >

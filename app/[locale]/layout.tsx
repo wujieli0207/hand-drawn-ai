@@ -8,6 +8,7 @@ import GoogleAnalytics from './GoogleAnalytics'
 import Loading from './loading'
 import { siteConfig } from '@/config/site'
 import { Header } from '@/components/Home/Header'
+import { Footer } from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -45,6 +46,7 @@ export default function RootLayout({
           {/* <Navigation /> */}
           <Header />
           <Suspense fallback={<Loading />}>{children}</Suspense>
+          <Footer />
         </NextIntlClientProvider>
 
         {process.env.NODE_ENV === 'development' ? (
