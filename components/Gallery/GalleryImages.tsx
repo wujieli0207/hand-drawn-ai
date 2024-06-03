@@ -41,12 +41,13 @@ export default function GalleryImages({ images, className }: IProps) {
             <h3 className="text-md font-semibold">{title}</h3>
             <div className="flex flex-wrap gap-2 mt-2">
               {tags.map((tag) => (
-                <span
+                <Link
+                  href={`/tag/${tag.name}`}
                   key={tag.id}
-                  className="rounded-full bg-white bg-opacity-75 px-3 py-1 text-sm text-black"
+                  className="rounded-full bg-white bg-opacity-75 px-3 py-1 text-sm text-black hover:bg-gray-200"
                 >
                   {tag.name}
-                </span>
+                </Link>
               ))}
             </div>
           </div>
