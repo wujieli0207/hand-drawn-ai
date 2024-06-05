@@ -80,6 +80,12 @@ const CategorySidebar = ({ category }: IProps) => {
   const responsive = useResponsive()
   const [drawerVisible, setDrawerVisible] = useState(false)
 
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(!responsive?.middle)
+  }, [responsive])
+
   // 将category数据构建为一级和二级分类结构
   const categoryMap = category.reduce((acc, curr) => {
     if (!acc[curr.firstCategory]) {
@@ -105,7 +111,7 @@ const CategorySidebar = ({ category }: IProps) => {
 
   return (
     <>
-      {responsive?.middle !== true ? (
+      {isMobile ? (
         <>
           <ConfigProvider
             theme={{
