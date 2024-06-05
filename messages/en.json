@@ -1,6 +1,7 @@
 {
   "Navbar": {
-    "home": "Home"
+    "home": "Home",
+    "catagory": "Catagory"
   },
   "Hero": {
     "title": "Where Hand Drawn Art Meets AI Magic",

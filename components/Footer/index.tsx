@@ -33,11 +33,7 @@ export const Footer = () => {
 
   const navigation = [
     { label: t('home'), href: '/' },
-    // { label: 'About', href: '/about' },
-    // { label: 'Programs' },
-    // { label: 'Gallery', href: '/gallery' },
-    // { label: 'Parents', href: '/parents' },
-    // { label: 'Contact', href: '/contact' },
+    { label: t('catagory'), href: '/category' },
   ]
 
   return (

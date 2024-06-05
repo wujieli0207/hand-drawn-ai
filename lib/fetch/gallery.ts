@@ -5,10 +5,11 @@ interface IParams {
   imageId?: string
   tagIds?: Array<ITag['id']>
   orderBy?: 'asc' | 'desc'
+  categoryId?: number
 }
 
 export async function fetchImages(params?: IParams): Promise<IImage[]> {
-  const { imageId, tagIds = [], orderBy = 'desc' } = params ?? {}
+  const { imageId, tagIds = [], orderBy = 'desc', categoryId } = params ?? {}
 
   const supabase = createClient()
 
@@ -69,6 +70,9 @@ export async function fetchImages(params?: IParams): Promise<IImage[]> {
   }
   if (tagIds.length > 0 && imageIds.length > 0) {
     query = query.in('id', imageIds)
+  }
+  if (categoryId) {
+    query = query.eq('categoryId', categoryId)
   }
 
   const { data: imagesData, error } = await query

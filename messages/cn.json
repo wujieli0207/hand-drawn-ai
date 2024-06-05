@@ -1,6 +1,7 @@
 {
   "Navbar": {
-    "home": "首页"
+    "home": "首页",
+    "catagory": "分类"
   },
   "Hero": {
     "title": "当手绘艺术遇上 AI",

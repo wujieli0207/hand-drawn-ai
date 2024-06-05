@@ -5,6 +5,8 @@ import { IImage } from '@/types/gallery'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { configResponsive, useResponsive } from 'ahooks'
+import { useMemo } from 'react'
 
 // 确保只在客户端渲染
 const Masonry = dynamic(() => import('masonic').then((mod) => mod.Masonry), {
@@ -16,7 +18,27 @@ interface IProps {
   className?: string
 }
 
+configResponsive({
+  small: 0,
+  middle: 800,
+  large: 1200,
+})
+
 export default function GalleryImages({ images, className }: IProps) {
+  const responsive = useResponsive()
+
+  const columnCount = useMemo(() => {
+    if (responsive?.large === true) {
+      return 4
+    } else if (responsive?.middle === true) {
+      return 3
+    } else if (responsive?.small === true) {
+      return 2
+    }
+
+    return 4
+  }, [responsive])
+
   const GalleryImage = ({ image }: { image: IImage }) => {
     const { id, imageUrl, title, tags = [] } = image
 
@@ -66,7 +88,7 @@ export default function GalleryImages({ images, className }: IProps) {
       <div className="mx-auto max-w-3xl lg:max-w-screen-xl">
         <Masonry
           key={images.length} // 使用key强制重新渲染
-          columnCount={4}
+          columnCount={columnCount}
           columnGutter={20}
           items={images}
           // @ts-ignore
