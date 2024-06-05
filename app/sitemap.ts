@@ -2,7 +2,7 @@ import { siteConfig } from '@/config/site'
 import { locales } from '@/i18n'
 import { fetchImages } from '@/lib/fetch/gallery'
 import { createClient } from '@/lib/supabase/server'
-import { IImage, ITag } from '@/types/gallery'
+import { ICategory, IImage, ITag } from '@/types/gallery'
 import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -10,6 +10,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const supabase = createClient()
 
+  // 分类
+  const { data: categoryData } = await supabase.from('category').select()
+  const category = categoryData as ICategory[]
+  const categoryRoutes = category.flatMap((item) => {
+    return locales.map((locale) => {
+      const lang = locale === 'en' ? '' : `${locale}/`
+      return {
+        url: `${siteUrl}${lang}category/${item.secondCategory}`,
+        lastModified: item.created_at,
+      }
+    })
+  })
+
+  // 标签
   const { data: tagsData } = await supabase.from('tag').select()
   const tags = tagsData as ITag[]
   const tagRoutes = tags.flatMap((item) => {
@@ -22,6 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
+  // 图片
   const result = await fetchImages()
   const images = result as IImage[]
 
@@ -40,5 +55,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...tagRoutes, ...imageRoutes]
+  return [...routes, ...categoryRoutes, ...tagRoutes, ...imageRoutes]
 }
