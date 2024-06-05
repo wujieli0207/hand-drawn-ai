@@ -24,7 +24,7 @@ export default async function Category() {
   const images = result as IImage[]
 
   return (
-    <div className="grid grid-cols-[200px_1fr] gap-4 mb-16">
+    <div className="mb-16 md:grid md:grid-cols-[200px_1fr] md:gap-4">
       <CategorySidebar category={allCategory} />
 
       <GalleryImages images={images} className="mb-12" />

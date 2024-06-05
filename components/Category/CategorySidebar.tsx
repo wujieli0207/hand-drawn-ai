@@ -3,6 +3,12 @@
 import { ICategory } from '@/types/gallery'
 import Link from 'next/link'
 import { ReactNode, useEffect, useState } from 'react'
+import { Drawer, Button, ConfigProvider } from 'antd'
+import { configResponsive, useResponsive } from 'ahooks'
+import { responseConfig } from '@/config/common'
+import Icon from '../Icon'
+
+configResponsive(responseConfig)
 
 interface NavLinkProps {
   children: ReactNode
@@ -71,6 +77,9 @@ interface IProps {
 }
 
 const CategorySidebar = ({ category }: IProps) => {
+  const responsive = useResponsive()
+  const [drawerVisible, setDrawerVisible] = useState(false)
+
   // 将category数据构建为一级和二级分类结构
   const categoryMap = category.reduce((acc, curr) => {
     if (!acc[curr.firstCategory]) {
@@ -83,17 +92,57 @@ const CategorySidebar = ({ category }: IProps) => {
     return acc
   }, {} as Record<string, { name: string; href: string }[]>)
 
+  const sidebarContent = (
+    <div className="text-[0.9rem] space-y-6">
+      {Object.keys(categoryMap).map((firstCategory, idx) => (
+        <div key={idx}>
+          <Title>{firstCategory}</Title>
+          <SectionsList items={categoryMap[firstCategory]} />
+        </div>
+      ))}
+    </div>
+  )
+
   return (
-    <nav className="mt-8 mb-12 border-r w-full h-full bg-white space-y-8 overflow-auto">
-      <div className="text-[0.9rem] space-y-6">
-        {Object.keys(categoryMap).map((firstCategory, idx) => (
-          <div key={idx}>
-            <Title>{firstCategory}</Title>
-            <SectionsList items={categoryMap[firstCategory]} />
-          </div>
-        ))}
-      </div>
-    </nav>
+    <>
+      {responsive?.middle !== true ? (
+        <>
+          <ConfigProvider
+            theme={{
+              components: {
+                Button: {
+                  defaultHoverBorderColor: '#6260b5',
+                  defaultHoverColor: '#6260b5',
+                },
+              },
+            }}
+          >
+            <Button
+              type="default"
+              size="large"
+              className="fixed top-1/2 -left-1 transform -translate-y-1/2 px-0"
+              style={{ zIndex: 1000 }}
+              onClick={() => setDrawerVisible(true)}
+            >
+              <Icon icon="chevronsRight" className="h-4 w-4" stroke={2} />
+            </Button>
+            <Drawer
+              placement="left"
+              closable={false}
+              width="200"
+              onClose={() => setDrawerVisible(false)}
+              open={drawerVisible}
+            >
+              {sidebarContent}
+            </Drawer>
+          </ConfigProvider>
+        </>
+      ) : (
+        <nav className="mt-8 mb-12 border-r w-full h-full bg-white space-y-8 overflow-auto">
+          {sidebarContent}
+        </nav>
+      )}
+    </>
   )
 }
 

@@ -7,6 +7,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { configResponsive, useResponsive } from 'ahooks'
 import { useMemo } from 'react'
+import { responseConfig } from '@/config/common'
 
 // 确保只在客户端渲染
 const Masonry = dynamic(() => import('masonic').then((mod) => mod.Masonry), {
@@ -18,11 +19,7 @@ interface IProps {
   className?: string
 }
 
-configResponsive({
-  small: 0,
-  middle: 800,
-  large: 1200,
-})
+configResponsive(responseConfig)
 
 export default function GalleryImages({ images, className }: IProps) {
   const responsive = useResponsive()
