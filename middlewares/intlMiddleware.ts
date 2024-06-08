@@ -8,6 +8,7 @@ const intlMiddleware = createMiddleware({
   locales,
   defaultLocale: 'en',
   localePrefix,
+  localeDetection: false,
 })
 
 export default intlMiddleware
